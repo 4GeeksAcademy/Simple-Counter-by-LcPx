@@ -1,26 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+function Contador() {
+  const [contador, setContador] = useState([0, 0, 0, 0, 0, 0]);
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setContador((prevContador) => {
+        let novoContador = [...prevContador];
+        for (let i = 5; i >= 0; i--) {
+          if (novoContador[i] < 9) {
+            novoContador[i] += 1;
+            break;
+          } else {
+            novoContador[i] = 0;
+          }
+        }
+        return novoContador;
+      });
+    }, 1000);
 
-export default Home;
+    return () => clearInterval(intervalo);
+  }, []);
+
+  return (
+    <div className="container">
+      <div className="contador">
+        <i className="far fa-clock"></i>
+        {contador.map((digito, index) => (
+          <span key={index} className="digito">
+            {digito}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Contador;

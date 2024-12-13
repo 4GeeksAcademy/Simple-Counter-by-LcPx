@@ -10,3 +10,36 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    height: 150px;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    letter-spacing: 10px;
+  }
+  
+  .digito {
+    display: inline-block;
+    font-size: 2em;
+    padding: 10px;
+  }
+  
+  .fa-clock {
+    font-size: 3em;
+    color: white;
+    margin-right: 10px;
+  }
